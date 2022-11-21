@@ -1,0 +1,5 @@
+lien 1
+lorum epsium
+-uploading files to use as maps or tokens
+-ability to partially automate character sheets and monsters (like press 1 button to roll a perception check or an attack)
+-integration of common rule sets (ie 5e, pathfinder, etc). The basic rulesets are usually free, but specifics such as classes or many spells are locked behind paying for the relevant book.

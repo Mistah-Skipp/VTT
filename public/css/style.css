@@ -1,0 +1,36 @@
+body{
+    background-color:pink;
+    height:auto;
+}
+#sideCol{
+    background-color: rgb(166, 100, 227);
+    width:20%;
+}
+#sideCol>table{
+    background-color: gray;
+    width:fit-content;
+    align-self: center;
+}
+#sideCol td{
+    align-self: right;
+
+}
+#mainArea{
+    align-self: stretch;
+    flex-grow: 2;
+}
+.flex-container{
+    display: flex;
+    flex-flow: row;
+    height:100%;
+    align-items: stretch;
+}
+.flex-container>div{
+    background-color: DodgerBlue;
+    color: white;
+    width: 100px;
+    text-align: center;
+    font-size: 30px;
+    
+
+}
