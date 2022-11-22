@@ -12,10 +12,9 @@
        </script>
     </head>
 
-    <body>
+    <body onload="startGame()">
         <div class="flex-container"> 
             <div id="mainArea">
-                <canvas id="myCanvas" width="1920" height="1080"></canvas>
             </div>
             <div id="sideCol">
                 <table>
@@ -35,6 +34,7 @@
             </div>
 
         </div>
+        <script async src="./public/script/drawOnCanvas.js"></script>
         <script src="./public/script/sideCol.js"></script>
     </body>
 

@@ -1,3 +1,4 @@
+
 console.log("sideCol.js loaded");
 
 $("#sideCol").on('click', '#chatButton', function () {
