@@ -13,35 +13,15 @@
        <script src="https://code.createjs.com/1.0.0/easeljs.min.js"></script>
        <script src="https://code.createjs.com/1.0.0/soundjs.min.js"></script>
        <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+       <script src="https://unpkg.com/konva@8/konva.min.js"></script>
+
        
     </head>
 
     <body onload="init()">
-        <div class="flex-container"> 
-            <div id="mainArea">
-                <button type="button" id="spawn">spawner</button>
-            </div>
-            <div id="sideCol">
-                <table>
-                <tr><!-- add a div per th, make clickable w/ chat being an empty overlay to see chat-->
-                    <th><button type="button" id="chatButton">chat</button></th>
-                    <th><button type="button" id="charButton">characters</button></th>
-                    <th><button type="button" id="diceButton">dice</button></th>
-                </tr>
-                <tr>
-                    <td colspan="3"><div id="upperTable">replace text w/ desired th click</div></td>
-                </tr>
-                <tr>
-                    <td colspan="3"><div id="lowerTable">chat goes here, displayed w/ and w/o dice, gets replaced when char is selected</div></td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-    <canvas id="test" width="1920" height="720"></canvas>
+        <div><button id="spawn">spawn </button></div>
+    <div id="gameArea"></div>
         <script async src="./public/script/drawOnCanvas.js"></script>
-        <script src="./public/script/sideCol.js"></script>
     </body>
 
 
