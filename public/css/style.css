@@ -2,36 +2,26 @@ body{
     background-color:pink;
     height:auto;
 }
-#sideCol{
-    background-color: rgb(166, 100, 227);
-    width:20%;
-}
-#sideCol>table{
-    background-color: gray;
-    width:fit-content;
-    align-self: center;
-}
-#sideCol td{
-    align-self: right;
-
-}
-#mainArea{
-    align-self: stretch;
-    flex-grow: 2;
-    overflow:auto
-}
 .flex-container{
     display: flex;
-    flex-flow: row;
-    height:100%;
-    align-items: stretch;
 }
-.flex-container>div{
-    background-color: DodgerBlue;
-    color: white;
-    width: 100px;
-    text-align: center;
-    font-size: 30px;
-    
+#left-section{
+    background-color: lightcoral;
+    flex:10%;
+    float:left;
+  }
+  #middle-section{
+    display: inline-block;
+    flex: 85%;
+    background-color: white;
+    width:1920px;
+    height: 1080px;
+    overflow: auto;
 
+  }
+  #right-section{
+    background-color: lightseagreen;
+    flex:15%;
+    float:right;
+    
 }

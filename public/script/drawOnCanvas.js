@@ -1,53 +1,40 @@
-var canvas, stage, offset, mouseTarget, dragStart;
-var update = true;
+var stage, layer;
 
-function init() {
-  canvas = document.getElementById("test");
-  stage = new createjs.Stage(canvas);
-
-  //mouse enable
-  stage.enableMouseOver(1);
-
-  handleLoader();
-}
-
-function handleLoader(event){
-  //var object = event.target;
-  var circle;
-  //var drawArea = new createjs.Container();
-  
-  $("#mainArea").on('click', '#spawn', function () {
-    circle = new createjs.Shape();
-    circle.graphics.beginFill("red").drawCircle(10,10,40);
-    circle.x = (Math.random() * 1920) + 50;
-    circle.y = (Math.random() * 1080)+ 50;
-    
-    stage.addChild(circle);
-    stage.update();
-    
-    circle.on("mousedown", function (evt){
-      this.parent.addChild(this);
-      this.offset = {x: this.x - evt.stageX, y: this.y - evt.stageY};
+function init(){
+  stage = new Konva.Stage({
+    container: "gameArea",
+    height: 1000,
+    width:1440
     });
-    
-    circle.on("pressmove", function (ext){
-      this.x = ext.stageX + this.offset.x;
-      this.y = ext.stageY + this.offset.y;
-      update = true;
-      
-    });
-    
-  });
-  createjs.Ticker.addEventListener(("tick"), tick);
-}
+   layer = new Konva.Layer();
 
-function tick(ticked){
-  if(update){
-    update = false;
-    stage.update(ticked);
+
+  $("body").on('click',"#spawn", function(){
+    var token = new Konva.Circle({
+        x: Math.random() *(stage.width()),
+        y: Math.random() *(stage.height()),
+        radius: 48,
+        fill: 'cyan',
+        draggable: true,
+      });   
+      //layer.draw();
+      layer.add(token);
+      stage.add(layer);
+      token.on('dragmove', () =>{
+        console.log( "X: "+token.x()+"||Y:"+token.y());
+        if (token.x()-(token.radius()/2)< 0){//left  side
+            token.x(token.radius());
+        } else if(token.x()+(token.radius()/2) > stage.width()){//right side
+            token.x(stage.width()-token.radius())
+        } else if(token.y()-(token.radius()/2)< 0){//top side
+            token.y(token.radius());
+        } else if(token.y()+(token.radius()/2) > stage.height()){//bottom side
+            token.y(stage.height()-token.radius());
+        }
+      })
+    });//onclick EOF
+    
   }
-}
 
 
-  //https://www.createjs.com/demos/easeljs/draganddrop
-
+  //96px = inch
