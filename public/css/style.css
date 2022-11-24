@@ -12,16 +12,16 @@ body{
   }
   #middle-section{
     display: inline-block;
-    flex: 85%;
-    background-color: white;
-    width:1920px;
-    height: 1080px;
+    flex: content;
+    background-color: gray;
+    height: 1920px;
+    width:1440px;
     overflow: auto;
 
   }
   #right-section{
     background-color: lightseagreen;
-    flex:15%;
+    flex:25%;
     float:right;
     
 }
