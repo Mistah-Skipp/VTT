@@ -14,7 +14,7 @@
        
     </head>
 
-    <body onload="init()">
+    <body>
         <div class="flex-container">
 
             <div id="left-section">
@@ -25,22 +25,7 @@
                 <div id="gameArea"></div>
             </div>
             <div id="right-section">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, cumque. 
-                Aut corrupti ex porro placeat odio obcaecati 
-                suscipit optio veniam aliquid excepturi error, itaque ad incidunt sint illum, delectus quam.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, cumque. 
-                Aut corrupti ex porro placeat odio obcaecati 
-                suscipit optio veniam aliquid excepturi error, itaque ad incidunt sint illum, delectus quam.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, cumque. 
-                Aut corrupti ex porro placeat odio obcaecati 
-                suscipit optio veniam aliquid excepturi error, itaque ad incidunt sint illum, delectus quam.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, cumque. 
-                Aut corrupti ex porro placeat odio obcaecati 
-                suscipit optio veniam aliquid excepturi error, itaque ad incidunt sint illum, delectus quam.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, cumque. 
-                Aut corrupti ex porro placeat odio obcaecati 
-                suscipit optio veniam aliquid excepturi error, itaque ad incidunt sint illum, delectus quam.
-            
+
             </div>
 
         </div>
@@ -49,7 +34,14 @@
 
 
         
-    
+    <div id="dice-holder-container">
+       <img src="./public/img/dice/d4.png" alt="D4" id="d4">
+        <img src="./public/img/dice/d6.png" alt="D6"id="d6">
+        <img src="./public/img/dice/d8.png" alt="D8"id="d8">
+        <img src="./public/img/dice/d10.png" alt="D10"id="d10">
+        <img src="./public/img/dice/d12.png" alt="D12"id="d12">
+        <img src="./public/img/dice/d20.png" alt="D20"id="d20">
+    </div>
     </body>
     
     <script async src="./public/script/drawOnCanvas.js"></script>
@@ -58,6 +50,11 @@
 
 <!--https://konvajs.org/api/Konva.html
     https://code.createjs.com/1.0.0/createjs.min.js
+https://longviewcoder.com/2021/12/08/konva-a-better-grid/
+
+https://konvajs.org/docs/sandbox/Drop_DOM_Element.html
+
+
 -uploading files to use as maps or tokens
 -ability to partially automate character sheets and monsters (like press 1 button to roll a perception check or an attack)
 -integration of common rule sets (ie 5e, pathfinder, etc). The basic rulesets are usually free, but specifics such as classes or many spells are locked behind paying for the relevant book.
