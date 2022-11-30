@@ -10,7 +10,7 @@
         crossorigin="anonymous">
        </script>
        <script src="https://unpkg.com/konva@8/konva.min.js"></script>
-
+       <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
        
     </head>
 
@@ -20,6 +20,7 @@
             <div id="left-section">
                 <button id="spawn">spawn circle</button>
                 <button id="gridToggle">Toggle grid</button>
+
             </div>
             <div id="middle-section">
                 <div id="gameArea"></div>
@@ -27,21 +28,23 @@
             <div id="right-section">
 
             </div>
-
+    <div id="dice-holder-container">
+       <img src="./public/img/dice/d4.png" alt="D4" id="4">
+        <img src="./public/img/dice/d6.png" alt="D6"id="6">
+        <img src="./public/img/dice/d8.png" alt="D8"id="8">
+        <img src="./public/img/dice/d10.png" alt="D10"id="10">
+        <img src="./public/img/dice/d12.png" alt="D12"id="12">
+        <img src="./public/img/dice/d20.png" alt="D20"id="20">
+    </div>
         </div>
 
 
 
-
+        <div>
+            <input type="file" id="file_input">
+          </div>
         
-    <div id="dice-holder-container">
-       <img src="./public/img/dice/d4.png" alt="D4" id="d4">
-        <img src="./public/img/dice/d6.png" alt="D6"id="d6">
-        <img src="./public/img/dice/d8.png" alt="D8"id="d8">
-        <img src="./public/img/dice/d10.png" alt="D10"id="d10">
-        <img src="./public/img/dice/d12.png" alt="D12"id="d12">
-        <img src="./public/img/dice/d20.png" alt="D20"id="d20">
-    </div>
+
     </body>
     
     <script async src="./public/script/drawOnCanvas.js"></script>
