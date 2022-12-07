@@ -15,35 +15,12 @@ body{
 
 #middle-section{
     display: inline-block;
-    flex: content;
     background-color: gray;
-    height: 1920px;
-    width:1440px;
-    overflow: auto;
+    overflow: scroll;
 }
 
 #right-section{
     background-color: lightseagreen;
     flex:25%;
     float:right;
-}
-
-#dice-holder-container {
-  position:fixed;
-  bottom:5%;
-  display: grid;
-  gap:65px;
-  grid-template-columns: repeat(7, auto);
-  left:12.5%;
-}
-
-#dice-holder-container > img {
-  width:100px;
-  height:100px;
-  
-}
-
-#dice-holder-container > img:hover {
-  background-color: rgb(249, 255, 135);
-  scale:200%;
 }

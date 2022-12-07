@@ -9,8 +9,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous">
        </script>
-       <script src="https://unpkg.com/konva@8/konva.min.js"></script>
-       <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+       <script src="https://cdn.babylonjs.com/babylon.max.js"></script>
        
     </head>
 
@@ -23,19 +22,11 @@
 
             </div>
             <div id="middle-section">
-                <div id="gameArea"></div>
+                <canvas id="gameArea" width="1920" height="1080"></canvas>
             </div>
             <div id="right-section">
 
             </div>
-    <div id="dice-holder-container">
-       <img src="./public/img/dice/d4.png" alt="D4" id="4">
-        <img src="./public/img/dice/d6.png" alt="D6"id="6">
-        <img src="./public/img/dice/d8.png" alt="D8"id="8">
-        <img src="./public/img/dice/d10.png" alt="D10"id="10">
-        <img src="./public/img/dice/d12.png" alt="D12"id="12">
-        <img src="./public/img/dice/d20.png" alt="D20"id="20">
-    </div>
         </div>
 
 
@@ -50,30 +41,3 @@
     <script async src="./public/script/drawOnCanvas.js"></script>
 
 </html>
-
-<!--https://konvajs.org/api/Konva.html
-    https://code.createjs.com/1.0.0/createjs.min.js
-https://longviewcoder.com/2021/12/08/konva-a-better-grid/
-
-https://konvajs.org/docs/sandbox/Drop_DOM_Element.html
-
-
--uploading files to use as maps or tokens
--ability to partially automate character sheets and monsters (like press 1 button to roll a perception check or an attack)
--integration of common rule sets (ie 5e, pathfinder, etc). The basic rulesets are usually free, but specifics such as classes or many spells are locked behind paying for the relevant book.
--drawing lines polygons or shapes, pinging, and measuring on top of the tabletop
--ability to make new monsters and edit them
--fog of war
--some stock tokens like some npcs, goblins, orcs, and some scenery stuff (some free stuff if necessary and additional packs can be sold if people want different art styles or if they want additional options)
--a grid, ability to align the grid, ability to snap things onto the grid or to not snap to the grid (roll20's grid system is fairly primitive, if the top row or leftmost column on your map is partially cut off you have to make it a drawing so it doesn't snap to the grid and drag it to the correct position so it will line up)
--separated layers, while everything can typically sit on top of each other, there has to be a functionality to put certain things to the background so you can't accidently drag the map out of alignment or uproot a tree because you missed the token, and others need to be hidden from the players on a GM layer
--initiative tracker, roll20's is fairly primitive, you must select a token roll specifically an initiative check and then it logs them in the order they were rolled. It would be nice if there was at least a sort button and if you can add a token to the intiative without having to hit the intiative button in case you rolled it but forgot to select the token or have things that act on set initiatives like lair actions
-[4:08 PM]
-***Stuff that I would really want to add
--roll20 locks behind a paywall realtime fog of war, or your character has a sight and anything that he can't see at this moment is hidden from him.
--fantasygrounds has physicalized dice, so you click on what dice you want to roll and cast them to actually roll, and everyone can see them actually rolling. This goes a long way to making the dice rolls feel real.
--make map editing more involved, add some features that would basically come straight from photoshop or gimp so you can like make permanent drawings on a map or crop it if you need.
--it would be nice if you can drop in different kinds of area of effects, where as in roll20 when someone casts fireball I just draw a 20ft radius circle and drag it to where they want to see if it works, and cones still somewhat confuse me and it would be nice if you could just select cone, 20ft, and pick a spot and it would show you how it could be fired
-
-
--->
