@@ -4,11 +4,12 @@ var token;
 var tokenID = 0;
 const canvas = document.getElementById("gameArea"); // Get the canvas element
 const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
-var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)})
+var meshList = [];
+
 const createScene = function () {
     const scene = new BABYLON.Scene(engine);
     const camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 25, 0), scene);
-    camera.inputs.clear();
+    //camera.inputs.clear();
 
     camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvas, true);
@@ -26,13 +27,8 @@ const createScene = function () {
     groundColor.diffuseColor = new BABYLON.Color3(130,130,130);
     ground.material = groundColor;
     ground.position.y = -10;
-
-
-    //dragging idea
-    //use mouse to get closest mesh and append the dragging behavior rather than
-    //adding it per mesh which breaks when a clone is made
-
-
+    ground.enablePointerMoveEvents = true;
+    
 
     return scene;
 };//createScene EOF
@@ -65,7 +61,7 @@ $("#left-section").on("click",'#spawn',function () {
   for( let i= 0; i < 3; i++){
     faceCol[i] = new BABYLON.Color4(255,255,255);
   }
-  token = BABYLON.MeshBuilder.CreateCylinder(tokenID, {
+  token = new BABYLON.MeshBuilder.CreateCylinder(tokenID, {
     diameter: 1,
     height: .05,
     faceUV:faceUv,
@@ -73,24 +69,21 @@ $("#left-section").on("click",'#spawn',function () {
   }, scene);
   token.position.x = Math.random() * 10;
   token.position.z = Math.random() *10;
-  token.material = mat;
-  //draggin token logic
-  
-  //dragToken.onDragStartObservable
-  dragging.onDragObservable.add()
-  dragging.onDragEndObservable.add(()=>{console.log(token.id);})
+  token.material = mat; 
+  var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
   token.addBehavior(dragging);
+  meshList.push(token);
   
   //TOKEN DELETE 
 //https://doc.babylonjs.com/features/featuresDeepDive/events/actions#experimenting-with-actions
   
   
   
-  console.log("NUM OF MESHES: "+scene.meshes.length + "||TOKENID: "+tokenID);
+  //console.log("NUM OF MESHES: "+scene.meshes.length);
   
   
+  tokenID++;
 });
-tokenID++;
 //cylinder faces
 //0 == bottom
 //1 == side
@@ -114,32 +107,44 @@ for(let i = 0;i < diceBox.length;i++){
             case "D4":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D4",{type:0,size: 0.5},scene);
               dice.position.x = dice.position.z = 0;
+              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
+              meshList.push(dice);
               break;
             case "D6":
               dice = BABYLON.MeshBuilder.CreateBox("D6",{},scene);
               dice.position.x = dice.position.z = 0;
+              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
+              meshList.push(dice);
               break;
             case "D8":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D8",{type:1,size: 0.5,},scene);
               dice.position.x = dice.position.z = 0;
+              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
+              meshList.push(dice);
               break;
             case "D10":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D10",{type:11,size: 0.8},scene);
               dice.position.x = dice.position.z = 0;
+              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
+              meshList.push(dice);
               break;
             case "D12":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D12",{type:2,size: 0.5},scene);
               dice.position.x = dice.position.z = 0;
+              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
+              meshList.push(dice);
               break;
             case "D20":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D20",{type:3,size: 0.5},scene);
               dice.position.x = dice.position.z = 0;
+              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
+              meshList.push(dice);
               break;
           }
         dicePool.length = [];
@@ -148,6 +153,8 @@ for(let i = 0;i < diceBox.length;i++){
     });//dragChecker.dragover
   });//diceBox.dragstart
   }//external for loop
+
+//EOF dice img drag 
   //EOF LEFT SECTION
 
 //---------------------------------------------------------------------------------------------------
