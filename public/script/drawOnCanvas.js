@@ -10,12 +10,13 @@ const createScene = function () {
     const scene = new BABYLON.Scene(engine);
     const camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 25, 0), scene);
     //camera.inputs.clear();
+    //replace default camera w/ one that pans on Lclick
 
     camera.setTarget(BABYLON.Vector3.Zero());
     camera.attachControl(canvas, true);
 
     var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 1), scene);
-    light.intensity = 0.5;
+    light.intensity = 1;
 
     var ground = BABYLON.MeshBuilder.CreateGround("tableTop",{
       width:1920,
@@ -47,16 +48,6 @@ engine.runRenderLoop(function () {
 $("#left-section").on("click",'#spawn',function () {
   console.log("spawning token");
 
-  var mat = new BABYLON.StandardMaterial("mat", scene);
-  var testMat = new BABYLON.Texture("https://i.imgur.com/lXehwjZ.jpg", scene);
-  mat.diffuseTexture = testMat;
-
-  var col = 6;
-  var row = 1;
-  var faceUv = [];
-  for( let i= 0; i < 3; i++){
-    faceUv[i] = new BABYLON.Vector4(i / col, 0 ,(i+1)/col, 1/row);
-  }
   var faceCol = [];
   for( let i= 0; i < 3; i++){
     faceCol[i] = new BABYLON.Color4(255,255,255);
@@ -64,32 +55,18 @@ $("#left-section").on("click",'#spawn',function () {
   token = new BABYLON.MeshBuilder.CreateCylinder(tokenID, {
     diameter: 1,
     height: .05,
-    faceUV:faceUv,
     faceColors: faceCol
   }, scene);
   token.position.x = Math.random() * 10;
   token.position.z = Math.random() *10;
-  token.material = mat; 
   var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
   token.addBehavior(dragging);
   meshList.push(token);
   
-  //TOKEN DELETE 
-//https://doc.babylonjs.com/features/featuresDeepDive/events/actions#experimenting-with-actions
-  
-  
-  
-  //console.log("NUM OF MESHES: "+scene.meshes.length);
-  
-  
   tokenID++;
 });
-//cylinder faces
-//0 == bottom
-//1 == side
-//2 == top
 
-//for grid toggle, set grid.y ~~ 5
+
 
 //dice img drag
 var diceBox = document.getElementById("dice-container").childNodes;
@@ -112,8 +89,17 @@ for(let i = 0;i < diceBox.length;i++){
               meshList.push(dice);
               break;
             case "D6":
-              dice = BABYLON.MeshBuilder.CreateBox("D6",{},scene);
+              var mat = new BABYLON.StandardMaterial("mat", scene);
+              var testMat = new BABYLON.Texture("./public/img/d6Test.jpg", scene);
+              //testMat.level = 5;
+              mat.diffuseTexture = testMat;
+              var col = 6;
+              var row = 1;
+              var faceUv = [];
+              for( let i= 0; i < 6; i++){faceUv[i] = new BABYLON.Vector4(i / col, 0 ,(i+1)/col, 1/row);}
+              dice = BABYLON.MeshBuilder.CreateBox("D6",{faceUV:faceUv},scene);
               dice.position.x = dice.position.z = 0;
+              dice.material = mat;
               var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
               meshList.push(dice);
