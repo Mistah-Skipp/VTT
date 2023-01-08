@@ -1,6 +1,6 @@
 
 //MAIN SECTION CODE
-var token;
+var token,dice;
 var tokenID = 0;
 const canvas = document.getElementById("gameArea"); // Get the canvas element
 const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
@@ -45,6 +45,11 @@ engine.runRenderLoop(function () {
 //---------------------------------------------------------------------------------------------------
 
 //LEFT SECTION CODE
+
+$("#left-section").on("click",'#meshdebuglist',function () {
+  console.log(meshList);
+
+});
 $("#left-section").on("click",'#spawn',function () {
   console.log("spawning token");
 
@@ -52,21 +57,24 @@ $("#left-section").on("click",'#spawn',function () {
   for( let i= 0; i < 3; i++){
     faceCol[i] = new BABYLON.Color4(255,255,255);
   }
-  token = new BABYLON.MeshBuilder.CreateCylinder(tokenID, {
+  token = new BABYLON.MeshBuilder.CreateCylinder("Token: "+tokenID, {
     diameter: 1,
     height: .05,
     faceColors: faceCol
   }, scene);
   token.position.x = Math.random() * 10;
   token.position.z = Math.random() *10;
-  var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
-  token.addBehavior(dragging);
-  meshList.push(token);
+  token.addBehavior(new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)}));1
+
   
+  meshList.push(token);
   tokenID++;
-});
+});//spawn token
+
+$("#left-seciton").on("click","gridToggle",function (){
 
 
+});//grid toggle
 
 //dice img drag
 var diceBox = document.getElementById("dice-container").childNodes;
@@ -84,9 +92,10 @@ for(let i = 0;i < diceBox.length;i++){
             case "D4":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D4",{type:0,size: 0.5},scene);
               dice.position.x = dice.position.z = 0;
-              var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
-              dice.addBehavior(dragging);
+              //var dragging = ;
+              dice.addBehavior(new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)}));
               meshList.push(dice);
+              roll(4);
               break;
             case "D6":
               var mat = new BABYLON.StandardMaterial("mat", scene);
@@ -103,6 +112,7 @@ for(let i = 0;i < diceBox.length;i++){
               var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
               meshList.push(dice);
+              roll(6);
               break;
             case "D8":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D8",{type:1,size: 0.5,},scene);
@@ -110,6 +120,7 @@ for(let i = 0;i < diceBox.length;i++){
               var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
               meshList.push(dice);
+              roll(8);
               break;
             case "D10":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D10",{type:11,size: 0.8},scene);
@@ -117,6 +128,7 @@ for(let i = 0;i < diceBox.length;i++){
               var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
               meshList.push(dice);
+              roll(10);
               break;
             case "D12":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D12",{type:2,size: 0.5},scene);
@@ -124,6 +136,7 @@ for(let i = 0;i < diceBox.length;i++){
               var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
               meshList.push(dice);
+              roll(12);
               break;
             case "D20":
               dice = BABYLON.MeshBuilder.CreatePolyhedron("D20",{type:3,size: 0.5},scene);
@@ -131,6 +144,7 @@ for(let i = 0;i < diceBox.length;i++){
               var dragging = new BABYLON.PointerDragBehavior({dragPlaneNormal:new BABYLON.Vector3(0,1,0)});
               dice.addBehavior(dragging);
               meshList.push(dice);
+              roll(20);
               break;
           }
         dicePool.length = [];
@@ -139,13 +153,18 @@ for(let i = 0;i < diceBox.length;i++){
     });//dragChecker.dragover
   });//diceBox.dragstart
   }//external for loop
-
 //EOF dice img drag 
   //EOF LEFT SECTION
 
 //---------------------------------------------------------------------------------------------------
 
 //RIGHT SECTION CODE
+function roll(sized){
+  dice = sized;
+  sized = Math.floor(Math.random() * sized)+1;
+  document.getElementById("chatLog").innerHTML += "Rolled a "+sized +" on a D"+dice+"<br>";
+
+}
 
 //EOF RIGHT SECTION
 

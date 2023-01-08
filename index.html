@@ -19,6 +19,7 @@
             <div id="left-section">
                 <button id="spawn">spawn circle</button>
                 <button id="gridToggle">Toggle grid</button>
+                <button id="meshdebuglist">mesh list</button>
                 <div id="dice-container">
                     <img src="./public/img/dice/d4.png" alt ="D4">
                     <img src="./public/img/dice/d6.png" alt = "D6">
@@ -32,19 +33,23 @@
                 <canvas id="gameArea" width="1920" height="1080"></canvas>
             </div>
             <div id="right-section">
+                <div>
+                    <input type="file" id="file_input">
+                  </div>
+                  <button id="chatTest">roll</button>
+                  <p id="chatLog">
 
+                  </p>
             </div>
         </div>
 
 
 
-        <div>
-            <input type="file" id="file_input">
-          </div>
+        
         
 
     </body>
     
     <script async src="./public/script/drawOnCanvas.js"></script>
-
+    <script data-main="scripts/main" src="scripts/require.js"></script>
 </html>
